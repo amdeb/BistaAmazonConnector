@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_create_amazon_shop" model="ir.ui.view">
+            <field name="name">Create Amazon Shop</field>
+            <field name="model">create.amazon.shop</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Create Amazon Shop">
+                    <separator string="Amazon Shop" colspan="4" />
+                    <field name="name" />
+                    <field name="warehouse_id" />
+                    <field name="cust_address" />
+                    <field name="picking_policy" />
+                    <field name="order_policy" />
+                    <field name="invoice_quantity" />
+                    <newline/>
+                    <group col="2" colspan="4">
+                        <button special="cancel" string="_Cancel" icon="gtk-cancel"/>
+                        <button name="create_amazon_shop_action" string="Create Amazon Shop" type="object" icon="gtk-apply" />
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="action_create_amazon_shop" model="ir.actions.act_window">
+            <field name="name">Create Amazon Shop</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.amazon.shop</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_create_amazon_shop"/>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.values" id="amazonerp_instance_create_amazon_shop">
+            <field name="object" eval="1" />
+            <field name="name">Create Amazon Shop</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_create_amazon_shop'))" />
+            <field name="key">action</field>
+            <field name="model">amazon.instance</field>
+        </record>
+    </data>
+</openerp>

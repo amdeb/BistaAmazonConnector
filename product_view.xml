@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            <record id="product_amazon_form_view" model="ir.ui.view">
+                <field name="name">product.amazon.form.inherit</field>
+                <field name="model">product.product</field>
+                <field name="inherit_id" ref="product.product_normal_form_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Amazon Details">
+                            <group>
+	                            <separator string="Amazon Details" colspan="8"/>
+	                            <group col="4" colspan="4">
+		                            <field name="amazon_export"/>
+		                            <!--<field name="amazon_sku" attrs="{'readonly':[('amazon_prod_status','in',('inactive','active'))]}"/>-->
+		                            <newline/>
+		                            <field name="amazon_sku" attrs="{'readonly':[('amazon_prod_status','in',('inactive','active'))]}"/>
+		                            <field name="amazon_asin"/>
+		                            <newline/>
+		                            <field name="amzn_condtn" colspan="2" />
+		                            <field name="condition_note" attrs="{'invisible':[('amzn_condtn','=','')]}"/>
+		                            <field name="amz_type" on_change="onchange_amz_type(amz_type)"/>
+		                            <field name="amz_type_value" attrs="{'required':[('amz_type','in',('UPC','EAN','ASIN','ISBN'))]}"/>
+		                            <!--<field name="amazon_category" colspan="2" attrs="{'required':[('amazon_export','=',True)]}"/>-->
+		                            <field name="amazon_category" colspan="2" invisible="1"/>
+	                            </group>
+	                            <separator string="Submit Feed Details" colspan="8"/>
+	                            <group col="4" colspan="4">
+		                            <field name="amazon_prod_status" invisible="1"/>
+		                            <field name="operation_performed" invisible="1"/>
+		                            <field name="submit_feed_result" colspan="4"/>
+	                            </group>
+	                            <separator string="Product Lookup" colspan="8"/>
+	                            <group col="4" colspan="4">
+		                            <field name="prod_query" colspan="4"/>
+		                            <field name="prod_query_contextid"/>
+		                            <field name="amazon_instance_id"/>
+		                            <button name="amazon_product_lookup" string="Perform Amazon Product Search" colspan="2" type="object" />
+		                            <!--<button name="amazon_product_by_salesrank" string="Perform Sales Rank Operation" colspan="2" type="object" />-->
+		                            <!--<button name="amazon_submit_feed" string="Submit Feed" colspan="4" type="object" />-->
+	                            </group>
+	                            <field name="amazon_products_ids" colspan="4" nolabel="1" mode="tree">
+	                                <tree string="Amazon Products">
+	                                    <field name="name" />
+	                                    <field name="product_asin" />
+	                                    <field name="product_category" />
+	                                    <field name="product_id" />
+	                                    <button name="action_process_amazon_details" string="View Amazon Product" icon="gtk-go-forward" type="object" />
+	                                </tree>
+	                          </field>
+                          </group>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+        </data>
+    </openerp>

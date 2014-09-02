@@ -1,0 +1,85 @@
+- 
+  Creating a record for amazon browse node.
+- 
+  !record {model: amazon.browse.node, id: amazon_browse_node_0}:
+    browse_node_country:
+      - base.ca
+      - base.cn
+      - base.fr
+      - base.de
+      - base.it
+      - base.jp
+      - base.es
+      - base.uk
+      - base.us
+    browse_node_name: amazon_browse_node
+    
+- 
+  Creating a record for amazon instance
+- 
+  !record {model: amazon.instance, id: amazon_instance_amazoninstancetest0}:
+    aws_access_key_id: AKIAIYVFZ2AN44LGHLNQ
+    aws_market_place_id: ATVPDKIKX0DER
+    aws_merchant_id: A2QXLIW4B1DZKZ
+    aws_secret_access_key: NjkyPzNgXRBKmgh2l0pkCQhbcBt//9EjPGyy3E4G
+    name: amazon_instance_test
+
+-
+  Create a record of amazon products master
+-
+  !record {model: amazon.products.master, id: amazon_products_master0}:  
+    name: test amazon product
+    product_category: test product category
+    product_id: product.product_product_24
+
+-
+  Modified a record of product
+-
+  !record {model: product.product, id: product.product_product_24}:
+    amazon_sku: RO7WA11930KB1PA1T
+    amazon_export: True
+    amz_type: 'ASIN'
+    amz_type_value: 0050538232
+    amzn_condtn: 'UsedGood'
+    amazon_prod_status: 'active'
+    operation_performed: test operation performed
+    amazon_products_ids: 
+      - name: test amazon product
+        product_category: test product category
+        product_id: product.product_product_24
+
+-
+  I create a record for amazon shop
+-
+  !record {model: create.amazon.shop, id: create_amazon_shop_0}:
+    name: test amazon shop
+    warehouse_id: stock.warehouse0
+    cust_address: base.res_partner_2
+    company_id: base.main_company
+    picking_policy: 'direct' 
+    order_policy: 'manual'
+    invoice_quantity: 'order'
+
+-
+  I clicked on 'Create Amazon Shop' button.
+-
+  !python {model: create.amazon.shop}: |
+    data = self.create_amazon_shop_action(cr, uid, [ref('create_amazon_shop_0')])
+
+-
+  I create a record for sale shop
+-
+  !record {model: sale.shop, id: sale_shop_0}:
+    name: test amazon shop
+    warehouse_id: stock.warehouse0
+    amazon_instance_id: amazon_instance_amazoninstancetest0
+    amazon_picking_policy: 'direct'
+    amazon_order_policy: 'manual'
+    amazon_invoice_quantity: 'order' 
+    partner_id: base.res_partner_2
+-
+  I clicked on 'Export Catalog' button.
+-
+  !python {model: sale.shop}: |
+    data = self.export_catalog_amazon(cr, uid, [ref('sale_shop_0')])
+      

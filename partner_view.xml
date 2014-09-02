@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="view_partner_form_amazon_site" model="ir.ui.view">
+                <field name="name">view.partner.from.amazon.site</field>
+                <field name="model">res.partner</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="base.view_partner_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="/form/sheet/notebook" position="inside">
+                        <page string="Amazon Information">
+                            <separator string="Amazon Shops" colspan="4" />
+                            <field colspan="4" name="amazon_shop_ids" nolabel="1" widget="one2many_list">
+                                <tree string="Amazon Shops">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>   
+                </field>
+            </record>
+</data>
+</openerp>

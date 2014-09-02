@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_amazon_searched_products" model="ir.ui.view">
+            <field name="name">Amazon Product Details</field>
+            <field name="model">amazon.product.lookup</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Amazon Product Details">
+                    <!--<separator string="Master Picking Slip" colspan="4" />-->
+                    <field name="name" />
+                    <field name="product_asin" />
+                    <field name="product_category" />
+                    <field name="product_id" invisible='1'/>
+                    <field colspan="4" mode="tree" name="product_attributes" nolabel="1">
+                        <!--<form string="Products">
+                            <field name="attribute_name"/>
+                            <field name="attribute_value"/>
+                        </form>-->
+                        <tree string="Amazon Product Details">
+                            <field name="attribute_name"/>
+                            <field name="attribute_value"/>
+                        </tree>
+                    </field>
+                    <button name="assign_asin_to_product" string="Assign ASIN" icon="gtk-go-forward" type="object" colspan="4"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_amazon_product_lookup" model="ir.actions.act_window">
+            <field name="name">Amazon Product Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">amazon.product.lookup</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_amazon_searched_products"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

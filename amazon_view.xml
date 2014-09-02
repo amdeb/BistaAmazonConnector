@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+        <data>
+	       <!-- Amazon Form -->
+            <record id="amazon_instance_form_view" model="ir.ui.view">
+            	<field name="name">amazon.instance.form</field>
+                <field name="model">amazon.instance</field>
+                <field name="arch" type="xml">
+                    <form string="Amazon Instance" version="7.0">
+                        <sheet>
+	                        <group colspan="4">
+	                            <field name="name" colspan="4" select="1"/>
+	                        </group>
+	                        <notebook colspan="4">
+	                            <page string="Authentication">
+	                                <group colspan="4" col="4">
+	                                    <separator string="Amazon Seller Account Credentials" colspan="4"/>
+	                                        <field name="aws_access_key_id"/>
+	                                        <field name="aws_secret_access_key"/>
+	                                        <field name="aws_market_place_id"/>
+	                                        <field name="aws_merchant_id"/>
+	                                        
+	                                </group>
+	                                <!--<button name="import_cat" string="Import Categories" colspan="4" type="object" />-->
+	                            </page>
+	                        </notebook>
+                        </sheet>
+                   </form>
+                </field>
+            </record>
+            
+	    <record model="ir.ui.view" id="view_patient_info_tree">
+            <field name="name">amazon.instance.tree</field>
+	        <field name="model">amazon.instance</field>
+	        <field name="arch" type="xml">
+            	<tree string="Amazon Instance">
+					<field name="name"/>
+                	<field name="aws_access_key_id"/>
+                    <field name="aws_secret_access_key"/>
+                    <field name="aws_market_place_id"/>
+                    <field name="aws_merchant_id"/>
+                </tree>
+            </field>
+        </record>
+	
+	<!-- Amazon Instance Form,Tree Menu Action  -->
+        <record model="ir.actions.act_window" id="action_amazon_instance">
+            <field name="name">Amazon Instances</field>
+            <field name="res_model">amazon.instance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_patient_info_tree"/>
+        </record>
+
+
+        <!-- Amazon Browse Nodes Form,Tree Menu Action  by safan-->
+            <record id="amazon_browse_node_form_view" model="ir.ui.view">
+                <field name="name">amazon.browse.node.form</field>
+                <field name="model">amazon.browse.node</field>
+                <field name="arch" type="xml">
+                    <form string="Amazon Browse Node" version="7.0">
+                        <sheet>
+	                        <group colspan="4">
+	                            <field name="browse_node_name" colspan="4" select="1"/>
+	                            <separator string="Available Browse Node Country" colspan="4"/>
+	                            <newline/>
+	                            <field name="browse_node_country" nolabel="1" colspan="4" domain="[('code','in',['US','GB','JP','IT','FR','ES','DE','CN','CA'])]"/>
+	                        </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+	    <record model="ir.ui.view" id="view_browse_node_info_tree">
+            <field name="name">amazon.browse.node.tree</field>
+	        <field name="model">amazon.browse.node</field>
+	        <field name="arch" type="xml">
+                <tree string="Amazon Browse Node">
+					<field name="browse_node_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_amazonerp_browse_node_form">
+            <field name="name">Amazon Browse Node</field>
+            <field name="res_model">amazon.browse.node</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        </data>
+</openerp>

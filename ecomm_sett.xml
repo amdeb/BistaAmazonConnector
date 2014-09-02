@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+     <data noupdate="True">
+        <!--E-Commerce Settings-->
+        <record id="view_ccsave_setting" model="base.sale.payment.type">
+           <field name="name">ccsave</field>
+           <field name="picking_policy">one</field>
+           <field name="order_policy">prepaid</field>
+           <field name="invoice_quantity">order</field>
+           <field name="validate_order">True</field>
+           <field name="create_invoice">True</field>
+           <field name="validate_picking">True</field>
+           <field name="validate_invoice">True</field>
+           <field name="check_if_paid">True</field>
+           <field name="validate_payment">True</field>
+           </record>
+      </data>
+ </openerp>

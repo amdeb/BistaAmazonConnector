@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="menu_amazon" name="Amazon-Connection" icon="terp-sale" web_icon="images/amazon.png" web_icon_hover="images/amazon-hover.png"/>
+		<menuitem id="menu_amazon_core" name="Core Settings" parent="menu_amazon" />
+                <menuitem id="menu_amazon_core_instances" name="Amazon Instances" parent="menu_amazon_core" action="action_amazon_instance" />
+                <menuitem id="menu_amazonerp_core_shops" name="Amazon Shops" parent="menu_amazon_core" action="act_amazonerp_shop_form" />
+                <menuitem id="menu_amazonerp_core_browse_node" name="Amazon Browse Node" parent="menu_amazon_core" action="act_amazonerp_browse_node_form" />
+                
+                
+                <!--<menuitem id="menu_amazonerp_product_listings" name="Product Listings" parent="menu_amazon"/>-->
+                <!--<menuitem id="menu_amazon_product_active_listings" name="Active Listings" parent="menu_amazonerp_product_listings" action="action_amazon_instance"/>-->
+                
+                <!--<menuitem id="menu_amazon_category_master" name="Amazon Categories" parent="menu_amazon"/>-->
+                
+       </data>
+</openerp>

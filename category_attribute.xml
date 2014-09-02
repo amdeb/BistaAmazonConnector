@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- For Categories Master Form view-->
+        <record id="view_category_attributes_form_amazon" model="ir.ui.view">
+            <field name="name">view.category.attributes.form.amazon</field>
+            <field name="model">amazon.category</field>
+            <field name="arch" type="xml">
+                <form string="Amazon Categories" version="7.0">
+                   <sheet>
+	                   <field name="name" />
+	                   <field name="amazon_attribute_ids" colspan="8"/>
+                   </sheet>
+               </form>
+            </field>
+        </record>
+        
+		<!-- For Categories Master Tree View-->
+        <record id="view_category_attributes_tree_amazon" model="ir.ui.view">
+            <field name="name">view.category.attributes.tree_amazon</field>
+            <field name="model">amazon.category</field>
+            <field name="arch" type="xml">
+                <tree  string="Amazon Categories">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Action for the categories master-->
+        <record id="action_amazon_category_master" model="ir.actions.act_window">
+            <field name="name">Amazon Categories</field>
+            <field name="res_model">amazon.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_category_attributes_tree_amazon"/>
+        </record>
+        
+        <!--<menuitem id="menu_amazon_category" name="Categories" parent="menu_amazon_category_master" action="action_amazon_category_master" />-->
+       <!--for Attributes Master Form View -->
+        <record id="view_amazon_attributes_form" model="ir.ui.view">
+            <field name="name">view.amazon.attributes.form</field>
+            <field name="model">amazon.attribute</field>
+            <field name="arch" type="xml">
+                <form string="Attributes" version="7.0">
+                    <sheet>
+                     	<field name="name" colspan="2"/>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- For Attributes Maste Tree view-->
+        <record id="view_amazon_attributes_tree" model="ir.ui.view">
+            <field name="name">view.amazon.attributes.tree</field>
+            <field name="model">amazon.attribute</field>
+            <field name="arch" type="xml">
+                <tree string="Attributes">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <!-- Action for the attribute master-->
+        <record id="action_amazon_attribute_master" model="ir.actions.act_window">
+            <field name="name">Attributes</field>
+            <field name="res_model">amazon.attribute</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_amazon_attributes_tree"/>
+        </record>
+        <!--<menuitem id="menu_amazon_attribute" name="Attribute" parent="menu_amazon_category_master" action="action_amazon_attribute_master"/>-->
+    </data>
+</openerp>

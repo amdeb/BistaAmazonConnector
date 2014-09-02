@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="base_sale_multichannels_view_amazon_shop">
+           <field name="name">base.sale.multichannels.view.amazon.shop</field>
+           <field name="model">sale.shop</field>
+           <field name="inherit_id" ref="base_sale_multichannels.base_sale_multichannels_view_shop_form" />
+           <field name="type">form</field>
+           <field name="arch" type="xml">
+                   <xpath expr="/form/notebook/page[@string='Actions']" position="attributes">
+                      <attribute name='attrs'>{'invisible':[('amazon_shop','=',True)]}</attribute>
+                   </xpath>
+                   <xpath expr="/form/notebook/page[@string='External Shop Settings']" position="attributes">
+                       <attribute name='attrs'>{'invisible':[('amazon_shop','=',True)]}</attribute>
+                   </xpath>
+               <!--
+															   <xpath expr="/form/notebook/page[@string='Exportable Products']" position="attributes">
+                       <attribute name='attrs'>{'invisible':[('amazon_shop','=',True)]}</attribute>
+                   </xpath>   
+															-->
+            </field>
+            </record>
+    </data>
+</openerp>
