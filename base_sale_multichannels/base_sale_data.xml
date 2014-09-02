@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<openerp>
+	<data noupdate="1">
+
+        <record id="categ_0" model="product.category">
+            <field name="parent_id" ref="null"/>
+            <field name="name">Service</field>
+        </record>
+
+		<record id="product_product_shipping" model="product.product">
+			<field name="default_code">SHIP</field>
+			<field name="list_price">0.0</field>
+			<field name="standard_price">0.0</field>
+			<field name="type">service</field>
+			<field name="name">Shipping and Handling</field>
+			<field name="magento_exportable" eval="False" />
+			<field name="categ_id" ref="categ_0"/>
+		</record>
+
+  </data>
+  <data noupdate="0">
+    <!-- it should be updated on module updates as this cron is mandatory
+         for the proper functioning of base_sale_multichannels
+    -->
+        <record forcecreate="True" id="ir_cron_autoreconcile_job" model="ir.cron">
+            <field name="name">Base Sale Auto-Workflows Job</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'auto.workflow.job'" name="model"/>
+            <field eval="'run'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+
+  </data>
+</openerp>
